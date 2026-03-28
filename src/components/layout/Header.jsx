@@ -2,14 +2,13 @@ import { useEffect, useState, useRef } from "react";
 import logo from "@/assets/vite.svg";
 import bgImage from "@/assets/header-background.png";
 import Icon from "@/components//ui/Icon/Icon";
+import SearchModal from "@/components/Modal/SearchModal";
 
 export default function Header() {
   const [workspace, setWorkspace] = useState("Workspace 1");
   const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const searchInputRef = useRef(null);
-  const searchBoxRef = useRef(null);
   const workspaceRef = useRef(null);
   const profileRef = useRef(null);
 
@@ -19,38 +18,12 @@ export default function Header() {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         setIsSearchOpen(true);
-        setTimeout(() => searchInputRef.current?.focus(), 100);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
-
-  // Search Dialogbox close functionlity
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") {
-        setIsSearchOpen(false);
-      }
-    };
-
-    const handleClickOutside = (e) => {
-      if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
-        setIsSearchOpen(false);
-      }
-    };
-
-    if (isSearchOpen) {
-      window.addEventListener("keydown", handleEsc);
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      window.removeEventListener("keydown", handleEsc);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isSearchOpen]);
 
   // Dropdown close functionlity
   useEffect(() => {
@@ -163,28 +136,10 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Search Modal */}
-      {isSearchOpen && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-start justify-center pt-32 z-50">
-          <div
-            ref={searchBoxRef}
-            className="bg-gray-900 w-full max-w-lg rounded-lg shadow-xl p-4 border border-white/10"
-          >
-            <div className="flex items-center gap-2 border border-white/20 px-3 py-2 rounded-md bg-white/10">
-              <Icon name="search" className="text-white" size={18} />
-              <input
-                ref={searchInputRef}
-                type="text"
-                placeholder="Search..."
-                className="w-full outline-none text-sm bg-transparent text-white placeholder-gray-400"
-              />
-              <button onClick={() => setIsSearchOpen(false)}>
-                <Icon name="close" className="text-white" size={18} />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </>
   );
 }
