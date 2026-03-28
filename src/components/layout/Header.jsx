@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import logo from "../../assets/vite.svg"
+import logo from "../../assets/vite.svg";
+import bgImage from "../../assets/header-background.png";
 import Icon from "../ui/Icon/Icon";
 
 export default function Header() {
@@ -28,15 +29,13 @@ export default function Header() {
 
   return (
     <>
-      <header className="h-16 border-b flex items-center justify-between px-6 bg-white">
-        
+      <header
+        className="h-16 flex items-center justify-between px-6 bg-cover bg-center"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
         {/* LEFT SECTION */}
         <div className="flex items-center gap-3 relative">
-          <img
-            src={logo}
-            alt="logo"
-            className="h-8 w-8 object-contain"
-          />
+          <img src={logo} alt="logo" className="h-8 w-8 object-contain" />
 
           <span className="text-lg font-semibold">Workspace</span>
 
@@ -76,9 +75,7 @@ export default function Header() {
             className="w-full max-w-md flex items-center gap-2 border rounded-md px-3 py-2 cursor-pointer hover:border-gray-400"
           >
             <Icon name="search" size={18} />
-            <span className="text-gray-400 text-sm flex-1">
-              Search...
-            </span>
+            <span className="text-gray-400 text-sm flex-1">Search...</span>
 
             <span className="text-xs border px-2 py-0.5 rounded bg-gray-100 text-gray-500">
               Ctrl + K
