@@ -17,7 +17,7 @@ export default function Sidebar() {
                   key={i}
                   className="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer
                   text-gray-700 font-medium
-                  hover:bg-indigo-50 hover:text-indigo-600
+                  hover:bg-indigo-50 hover:text-[#4F46E5]
                   transition-colors"
                 >
                   <Icon name={item.icon} size={20} />

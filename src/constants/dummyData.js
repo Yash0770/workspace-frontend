@@ -10,8 +10,8 @@ export const sidebarSections = [
   {
     title: "Orchestrator",
     items: [
-      { label: "Published", icon: "publishIcon" },
-      { label: "Machines", icon: "shieldIcon" },
+      { label: "Published", icon: "agentIcon" },
+      { label: "Machines", icon: "machineIcon" },
       { label: "Queues", icon: "queueIcon" },
       { label: "Triggers", icon: "trigerIcon" },
       { label: "Jobs", icon: "jobIcon" },
@@ -19,6 +19,14 @@ export const sidebarSections = [
       { label: "Vault", icon: "vaultIcon" },
       { label: "Knowledge base", icon: "knowledgeIcon" },
       { label: "Key Store", icon: "keyStoreIcon" },
+    ],
+  },
+  {
+    title: "Admin",
+    items: [
+      { label: "Tenant", icon: "tenantIcon" },
+      { label: "Integrations", icon: "integrationIcon" },
+      { label: "Dashboard", icon: "dashboardIcon" },
     ],
   },
 ];

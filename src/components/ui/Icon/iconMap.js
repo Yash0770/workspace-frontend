@@ -8,6 +8,18 @@ import SettingsIcon from "./icons/SettingsIcon";
 import LogoutIcon from "./icons/LogoutIcon";
 import AgentIcon from "./icons/AgentIcon";
 import LibraryIcon from "./icons/LibraryIcon";
+import AiModelIcon from "./icons/AiModelIcon";
+import MachineIcon from "./icons/MachineIcon";
+import QueueIcon from "./icons/QueueIcon";
+import JobIcon from "./icons/JobIcon";
+import TrigerIcon from "./icons/TrigerIcon";
+import ExecutionIcon from "./icons/ExecutionIcon";
+import VaultIcon from "./icons/VaultIcon";
+import KnowledgeIcon from "./icons/KnowledgeIcon";
+import KeyStoreIcon from "./icons/KeyStoreIcon";
+import TenantIcon from "./icons/TenantIcon";
+import IntegrationIcon from "./icons/IntegrationIcon";
+import DashboardIcon from "./icons/DashboardIcon";
 
 export const ICON_MAP = {
   plus: PlusIcon,
@@ -20,4 +32,16 @@ export const ICON_MAP = {
   logout: LogoutIcon,
   agentIcon: AgentIcon,
   libraryIcon: LibraryIcon,
+  aiModelIcon: AiModelIcon,
+  machineIcon: MachineIcon,
+  queueIcon: QueueIcon,
+  jobIcon: JobIcon,
+  trigerIcon: TrigerIcon,
+  executionIcon: ExecutionIcon,
+  vaultIcon: VaultIcon,
+  knowledgeIcon: KnowledgeIcon,
+  keyStoreIcon: KeyStoreIcon,
+  tenantIcon: TenantIcon,
+  integrationIcon: IntegrationIcon,
+  dashboardIcon: DashboardIcon,
 };
