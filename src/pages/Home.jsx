@@ -13,21 +13,46 @@ export default function Home() {
   return (
     <MainLayout>
       {/* Header section */}
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-semibold">All Articles</h2>
+      <div className="flex justify-between items-center mt-1 mb-6">
+        <h2 className="text-2xl font-bold">Knowledge Base</h2>
 
-        <Button onClick={handleOpen}>Create New</Button>
+        <Button onClick={handleOpen} className="cursor-pointer">
+          Create New
+        </Button>
       </div>
 
       {/* Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <Card title="Getting Started" description="Basic introduction">
+        <Card title="Test Learn how to start using the platform. Learn how to start using the platform.">
           <p className="text-sm text-gray-600">
             Learn how to start using the platform.
           </p>
         </Card>
 
-        <Card title="Account Setup" description="Profile & settings">
+        <Card title="Account Setup">
+          <p className="text-sm text-gray-600">
+            Manage your account preferences. Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Cumque nesciunt unde officiis ipsam
+            cupiditate numquam dolorum distinctio expedita. Animi corrupti iure
+            dolores non nobis aspernatur esse enim consequuntur accusantium
+            ullam. Quidem possimus magni adipisci facere laboriosam eius. Eaque
+            tempore suscipit, commodi, similique rem deleniti ex itaque pariatur
+            eum inventore voluptatem hic obcaecati maiores saepe dolores
+            quisquam harum vero neque culpa. Non veritatis amet voluptates sint
+            libero fugiat. Doloribus atque eius esse minima ratione modi illo
+            qui beatae quas, optio repudiandae sequi at impedit obcaecati
+            explicabo? Amet dicta temporibus rerum modi? A ipsum qui dicta
+            dolore porro ipsa dolorem ratione. Ducimus, debitis animi?
+            Perspiciatis veniam qui labore minima fugit officiis aliquid rem
+            ullam placeat quia, id delectus reiciendis atque. Amet, harum!
+          </p>
+        </Card>
+        <Card title="Account Setup">
+          <p className="text-sm text-gray-600">
+            Manage your account preferences.
+          </p>
+        </Card>
+        <Card title="Account Setup">
           <p className="text-sm text-gray-600">
             Manage your account preferences.
           </p>
