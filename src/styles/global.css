@@ -1,2 +1,12 @@
 @import "tailwindcss";
 
+@layer components {
+  .container-1440 {
+    @apply w-full mx-auto
+      max-w-[640px]
+      sm:max-w-[768px]
+      md:max-w-[1024px]
+      lg:max-w-[1280px]
+      xl:max-w-[1440px];
+  }
+}
