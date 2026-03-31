@@ -3,28 +3,31 @@ import { sidebarSections } from "../../constants/dummyData";
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 bg-gray-50 text-gray-900 p-5 border-r border-gray-200">
-      {sidebarSections.map((section, index) => (
-        <div key={index} className="mb-6">
-          {/* Section Title */}
-          <h2 className="lg:mt-3 text-base font-medium text-gray-500 mb-4 uppercase">
-            {section.title}
-          </h2>
+    <aside className="w-46 lg:w-64 border-r border-gray-200 bg-gray-50 flex flex-col">
+      <div className="flex-1 overflow-y-auto scrollbar p-5">
+        {sidebarSections.map((section, index) => (
+          <div key={index} className="mb-6">
+            <h2 className="text-sm font-medium text-gray-500 mb-4 uppercase">
+              {section.title}
+            </h2>
 
-          {/* Items */}
-          <nav className="space-y-3 text-base">
-            {section.items.map((item, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 font-semibold hover:text-indigo-600 hover:bg-gray-100 px-4 py-2 rounded cursor-pointer"
-              >
-                <Icon name={item.icon} size={20} />
-                <span>{item.label}</span>
-              </div>
-            ))}
-          </nav>
-        </div>
-      ))}
+            <nav className="space-y-2">
+              {section.items.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer
+                  text-gray-700 font-medium
+                  hover:bg-indigo-50 hover:text-indigo-600
+                  transition-colors"
+                >
+                  <Icon name={item.icon} size={20} />
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </nav>
+          </div>
+        ))}
+      </div>
     </aside>
   );
 }

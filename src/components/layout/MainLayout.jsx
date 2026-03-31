@@ -3,15 +3,15 @@ import Header from "./Header";
 
 export default function MainLayout({ children }) {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <div className="lg:container lg:mx-auto flex flex-col flex-1">
-        <Header />
+    <div className="h-screen flex flex-col overflow-hidden bg-gray-50">
+      <Header />
 
-        <div className="flex flex-1">
-          <Sidebar />
+      <div className="flex flex-1 overflow-hidden">
+        <Sidebar />
 
-          <main className="flex-1 bg-gray-50 p-4 md:p-6">{children}</main>
-        </div>
+        <main className="flex-1 overflow-y-auto p-4 md:p-6">
+          <div className="container">{children}</div>
+        </main>
       </div>
     </div>
   );
