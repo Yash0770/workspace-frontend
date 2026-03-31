@@ -6,6 +6,8 @@ import BellIcon from "./icons/BellIcon";
 import ChevronDownIcon from "./icons/ChevronDownIcon";
 import SettingsIcon from "./icons/SettingsIcon";
 import LogoutIcon from "./icons/LogoutIcon";
+import AgentIcon from "./icons/AgentIcon";
+import LibraryIcon from "./icons/LibraryIcon";
 
 export const ICON_MAP = {
   plus: PlusIcon,
@@ -16,4 +18,6 @@ export const ICON_MAP = {
   chevronDown: ChevronDownIcon,
   settings: SettingsIcon,
   logout: LogoutIcon,
+  agentIcon: AgentIcon,
+  libraryIcon: LibraryIcon,
 };
