@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import logo from "@/assets/vite.svg";
-// import bgImage from "@/assets/header-background.png";
 import Icon from "@/components//ui/Icon/Icon";
 import SearchModal from "@/components/Modal/SearchModal";
 
@@ -9,8 +8,11 @@ export default function Header() {
   const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const workspaceRef = useRef(null);
   const profileRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   // Ctrl + K shortcut
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function Header() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Dropdown close functionlity
+  // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (workspaceRef.current && !workspaceRef.current.contains(e.target)) {
@@ -35,37 +37,30 @@ export default function Header() {
       if (profileRef.current && !profileRef.current.contains(e.target)) {
         setIsProfileOpen(false);
       }
+
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
+        setIsMobileMenuOpen(false);
+      }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const workspaces = ["Workspace 1", "Workspace 2", "Workspace 3"];
 
   return (
     <>
-      <header
-        className="relative mx-4 h-16 flex items-center justify-between px-6 text-white
-             rounded-xl backdrop-blur-md
-             bg-[radial-gradient(circle_at_center,_#3b82f6,_#211d50)]"
-        //  style={{ backgroundImage: `url(${bgImage})` }}
-      >
-        <div className="absolute inset-0 rounded-xl bg-black/50 backdrop-blur-sm"></div>
+      <header className="relative lg:mx-4 h-16 flex items-center justify-between px-4 md:px-6 text-white lg:rounded-xl backdrop-blur-md bg-[radial-gradient(circle_at_center,_#3b82f6,_#211d50)]">
+        <div className="absolute inset-0 lg:rounded-xl bg-black/50 backdrop-blur-sm"></div>
 
-        {/* Workspace Section */}
+        {/* LEFT SECTION */}
         <div className="flex items-center gap-3 relative z-10">
           <img src={logo} alt="logo" className="h-8 w-8 object-contain" />
+          <span className="text-lg font-semibold tracking-wide">Workspace</span>
 
-          <span className="text-lg font-semibold tracking-wide mr-2">
-            Workspace
-          </span>
-
-          {/* Dropdown */}
-          <div className="relative" ref={workspaceRef}>
+          {/* Workspace Dropdown (Desktop only) */}
+          <div className="relative hidden md:block" ref={workspaceRef}>
             <button
               onClick={() => setIsWorkspaceOpen(!isWorkspaceOpen)}
               className="flex items-center gap-2 text-sm font-medium border border-white/20 pl-3 pr-2 py-0.5 rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer"
@@ -83,7 +78,7 @@ export default function Header() {
                       setWorkspace(ws);
                       setIsWorkspaceOpen(false);
                     }}
-                    className="px-3 py-2 text-sm text-white hover:bg-gray-700 cursor-pointer transition"
+                    className="px-3 py-2 text-sm hover:bg-gray-700 cursor-pointer"
                   >
                     {ws}
                   </div>
@@ -93,33 +88,31 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Search Bar*/}
-        <div className="flex-1 flex justify-center relative z-10">
+        {/* DESKTOP CENTER SEARCH */}
+        <div className="hidden md:flex flex-1 justify-center relative z-10">
           <div
             onClick={() => setIsSearchOpen(true)}
-            className="w-full max-w-md flex items-center gap-2 border border-white/20 rounded-lg px-3 py-2 cursor-pointer bg-white/10 hover:bg-white/20 transition"
+            className="w-full max-w-xs lg:max-w-md flex items-center gap-2 border border-white/20 rounded-lg px-3 py-2 cursor-pointer bg-white/10 hover:bg-white/20 transition"
           >
             <Icon name="search" size={18} />
             <span className="text-gray-300 text-sm flex-1">Search...</span>
-
             <span className="text-xs border border-white/20 px-2 py-0.5 rounded bg-white/10 text-gray-300">
               Ctrl + K
             </span>
           </div>
         </div>
 
-        <div className="flex items-center gap-8 relative z-10">
-          {/* Notification */}
-          <button className="relative hover:scale-105 transition cursor-pointer">
+        {/* DESKTOP RIGHT */}
+        <div className="hidden md:flex items-center gap-6 relative z-10">
+          <button className="relative cursor-pointer">
             <Icon name="bell" size={20} />
             <span className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></span>
           </button>
 
-          {/* Profile */}
           <div className="relative" ref={profileRef}>
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
-              className="h-9 w-9 rounded-full bg-[#aba6e8] text-white flex items-center justify-center text-sm font-semibold border border-[#1E1B4B] hover:bg-[#8c76c5] transition cursor-pointer"
+              className="h-9 w-9 rounded-full bg-[#aba6e8] flex items-center justify-center text-sm font-semibold border border-[#1E1B4B] hover:bg-[#8c76c5] transition cursor-pointer"
             >
               YS
             </button>
@@ -138,7 +131,72 @@ export default function Header() {
             )}
           </div>
         </div>
-        {/* </div> */}
+
+        {/* MOBILE MENU BUTTON */}
+        <div className="md:hidden relative z-10" ref={mobileMenuRef}>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2"
+          >
+            {isMobileMenuOpen ? (
+              <Icon name="chevronDown" size={28} className="mt-2" />
+            ) : (
+              <Icon name="menuIcon" size={22} className="mt-1" />
+            )}
+          </button>
+
+          {/* MOBILE DROPDOWN */}
+          {isMobileMenuOpen && (
+            <div className="absolute right-0 mt-1 w-64 bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-3 space-y-2">
+              {/* Workspace */}
+              <div>
+                <p className="px-2 py-1 text-l">Workspace</p>
+                {/* {workspaces.map((ws) => (
+                  <div
+                    key={ws}
+                    onClick={() => {
+                      setWorkspace(ws);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="px-2 py-1 hover:bg-gray-700 rounded cursor-pointer"
+                  >
+                    {ws}
+                  </div>
+                ))} */}
+              </div>
+
+              {/* Search */}
+              <div
+                onClick={() => {
+                  setIsSearchOpen(true);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="flex items-center gap-2 px-2 py-1 hover:bg-gray-700 rounded cursor-pointer"
+              >
+                <Icon name="search" size={18} />
+                Search
+              </div>
+
+              {/* Notifications */}
+              <div className="flex items-center gap-2 px-2 py-2 hover:bg-gray-700 rounded cursor-pointer">
+                <Icon name="bell" size={18} />
+                Notifications
+              </div>
+
+              {/* Profile */}
+              <div className="border-t border-gray-700 pt-2">
+                <div className="px-2 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
+                  <Icon name="settings" size={18} className="mt-1" />
+                  Settings
+                </div>
+                <div className="px-2 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
+                  <Icon name="logout" size={18} className="mt-1" />
+                  Logout
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </header>
 
       <SearchModal

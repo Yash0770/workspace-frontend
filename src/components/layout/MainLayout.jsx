@@ -4,7 +4,7 @@ import Header from "./Header";
 export default function MainLayout({ children }) {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <div className="container flex flex-col flex-1">
+      <div className="lg:container lg:mx-auto flex flex-col flex-1">
         <Header />
 
         <div className="flex flex-1">

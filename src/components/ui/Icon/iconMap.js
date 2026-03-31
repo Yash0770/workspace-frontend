@@ -11,7 +11,7 @@ export const ICON_MAP = {
   plus: PlusIcon,
   close: CloseIcon,
   search: SearchIcon,
-  menu: MenuIcon,
+  menuIcon: MenuIcon,
   bell: BellIcon,
   chevronDown: ChevronDownIcon,
   settings: SettingsIcon,

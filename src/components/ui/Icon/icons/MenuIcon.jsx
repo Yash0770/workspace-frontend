@@ -1,9 +1,20 @@
 export default function MenuIcon({ strokeWidth = 2 }) {
   return (
-    <>
-      <line x1="4" y1="6" x2="20" y2="6" stroke="currentColor" strokeWidth={strokeWidth} />
-      <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" strokeWidth={strokeWidth} />
-      <line x1="4" y1="18" x2="20" y2="18" stroke="currentColor" strokeWidth={strokeWidth} />
-    </>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="lucide lucide-menu-icon lucide-menu"
+    >
+      <path d="M4 5h16" />
+      <path d="M4 12h16" />
+      <path d="M4 19h16" />
+    </svg>
   );
 }
