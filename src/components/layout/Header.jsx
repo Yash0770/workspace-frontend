@@ -58,16 +58,18 @@ export default function Header() {
         <div className="flex items-center gap-3 relative z-10">
           <img src={logo} alt="logo" className="h-8 w-8 object-contain" />
 
-          <span className="text-lg font-semibold tracking-wide">Workspace</span>
+          <span className="text-lg font-semibold tracking-wide mr-2">
+            Workspace
+          </span>
 
           {/* Dropdown */}
           <div className="relative" ref={workspaceRef}>
             <button
               onClick={() => setIsWorkspaceOpen(!isWorkspaceOpen)}
-              className="flex items-center gap-1 text-sm font-medium border border-white/20 px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition cursor-pointer"
+              className="flex items-center gap-2 text-sm font-medium border border-white/20 pl-3 pr-2 py-0.5 rounded-full bg-white/10 hover:bg-white/20 transition cursor-pointer"
             >
               {workspace}
-              <Icon name="chevronDown" size={16} />
+              <Icon name="chevronDown" size={22} className="mt-0.5 ml-2" />
             </button>
 
             {isWorkspaceOpen && (
@@ -93,7 +95,7 @@ export default function Header() {
         <div className="flex-1 flex justify-center relative z-10">
           <div
             onClick={() => setIsSearchOpen(true)}
-            className="w-full max-w-md flex items-center gap-2 border border-white/20 rounded-md px-3 py-2 cursor-pointer bg-white/10 hover:bg-white/20 transition"
+            className="w-full max-w-md flex items-center gap-2 border border-white/20 rounded-lg px-3 py-2 cursor-pointer bg-white/10 hover:bg-white/20 transition"
           >
             <Icon name="search" size={18} />
             <span className="text-gray-300 text-sm flex-1">Search...</span>
@@ -104,10 +106,10 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 relative z-10">
+        <div className="flex items-center gap-8 relative z-10">
           {/* Notification */}
-          <button className="relative hover:scale-105 transition">
-            <Icon name="bell" size={22} />
+          <button className="relative hover:scale-105 transition cursor-pointer">
+            <Icon name="bell" size={20} />
             <span className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></span>
           </button>
 
@@ -115,7 +117,7 @@ export default function Header() {
           <div className="relative" ref={profileRef}>
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
-              className="h-9 w-9 rounded-full bg-white/20 text-white flex items-center justify-center text-sm font-semibold hover:bg-white/30 transition cursor-pointer"
+              className="h-9 w-9 rounded-full bg-[#aba6e8] text-white flex items-center justify-center text-sm font-semibold border border-[#1E1B4B] hover:bg-[#8c76c5] transition cursor-pointer"
             >
               YS
             </button>
