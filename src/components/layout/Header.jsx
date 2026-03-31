@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import logo from "@/assets/vite.svg";
-import bgImage from "@/assets/header-background.png";
+// import bgImage from "@/assets/header-background.png";
 import Icon from "@/components//ui/Icon/Icon";
 import SearchModal from "@/components/Modal/SearchModal";
 
@@ -49,10 +49,12 @@ export default function Header() {
   return (
     <>
       <header
-        className="h-16 flex items-center justify-between px-6 bg-cover bg-center text-white backdrop-blur-md"
-        style={{ backgroundImage: `url(${bgImage})` }}
+        className="relative mx-4 h-16 flex items-center justify-between px-6 text-white
+             rounded-xl backdrop-blur-md
+             bg-[radial-gradient(circle_at_center,_#3b82f6,_#211d50)]"
+        //  style={{ backgroundImage: `url(${bgImage})` }}
       >
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
+        <div className="absolute inset-0 rounded-xl bg-black/50 backdrop-blur-sm"></div>
 
         {/* Workspace Section */}
         <div className="flex items-center gap-3 relative z-10">
@@ -136,6 +138,7 @@ export default function Header() {
             )}
           </div>
         </div>
+        {/* </div> */}
       </header>
 
       <SearchModal
