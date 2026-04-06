@@ -8,11 +8,11 @@ export default function Header() {
   const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const workspaceRef = useRef(null);
   const profileRef = useRef(null);
-  const mobileMenuRef = useRef(null);
+
+  const workspaces = ["Workspace 1", "Workspace 2", "Workspace 3"];
 
   // Ctrl + K shortcut
   useEffect(() => {
@@ -36,10 +36,7 @@ export default function Header() {
 
       if (profileRef.current && !profileRef.current.contains(e.target)) {
         setIsProfileOpen(false);
-      }
-
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
-        setIsMobileMenuOpen(false);
+        setIsWorkspaceOpen(false);
       }
     };
 
@@ -47,19 +44,17 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const workspaces = ["Workspace 1", "Workspace 2", "Workspace 3"];
-
   return (
     <>
       <header className="relative lg:mx-4 h-16 flex items-center justify-between px-4 md:px-6 text-white lg:rounded-xl backdrop-blur-md bg-[radial-gradient(circle_at_center,_#3b82f6,_#211d50)]">
         <div className="absolute inset-0 lg:rounded-xl bg-black/50 backdrop-blur-sm"></div>
 
-        {/* LEFT SECTION */}
+        {/* LEFT */}
         <div className="flex items-center gap-3 relative z-10">
           <img src={logo} alt="logo" className="h-8 w-8 object-contain" />
           <span className="text-lg font-semibold tracking-wide">Workspace</span>
 
-          {/* Workspace Dropdown (Desktop only) */}
+          {/* Desktop Workspace Dropdown */}
           <div className="relative hidden md:block" ref={workspaceRef}>
             <button
               onClick={() => setIsWorkspaceOpen(!isWorkspaceOpen)}
@@ -88,7 +83,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* DESKTOP CENTER SEARCH */}
+        {/* DESKTOP SEARCH */}
         <div className="hidden md:flex flex-1 justify-center relative z-10">
           <div
             onClick={() => setIsSearchOpen(true)}
@@ -103,12 +98,14 @@ export default function Header() {
         </div>
 
         {/* DESKTOP RIGHT */}
-        <div className="hidden md:flex items-center gap-6 relative z-10">
+        <div className="flex items-center gap-4 md:gap-6 relative z-10">
+          {/* Bell */}
           <button className="relative cursor-pointer">
             <Icon name="bell" size={20} />
             <span className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></span>
           </button>
 
+          {/* Profile */}
           <div className="relative" ref={profileRef}>
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
@@ -118,84 +115,67 @@ export default function Header() {
             </button>
 
             {isProfileOpen && (
-              <div className="absolute right-0 mt-2 w-44 bg-gray-800 border border-gray-700 rounded-md shadow-lg">
-                <div className="px-3 py-2 text-white hover:bg-gray-700 flex items-center gap-2 cursor-pointer transition">
+              <div className="absolute right-0 mt-2 w-56 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-20">
+                {/* MOBILE ONLY */}
+                <div className="md:hidden">
+                  {/* Search */}
+                  <div
+                    onClick={() => {
+                      setIsSearchOpen(true);
+                      setIsProfileOpen(false);
+                    }}
+                    className="px-3 py-2 hover:bg-gray-700 flex items-center gap-2 cursor-pointer"
+                  >
+                    <Icon name="search" size={16} />
+                    Search
+                  </div>
+
+                  {/* Workspace */}
+                  <div className="relative" ref={workspaceRef}>
+                    <div
+                      onClick={() => setIsWorkspaceOpen(!isWorkspaceOpen)}
+                      className="px-3 py-2 hover:bg-gray-700 flex items-center justify-between cursor-pointer"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Icon name="chevronDown" size={16} />
+                        Workspaces
+                      </div>
+                    </div>
+
+                    {isWorkspaceOpen && (
+                      <div className="ml-4 mb-2">
+                        {workspaces.map((ws) => (
+                          <div
+                            key={ws}
+                            onClick={() => {
+                              setWorkspace(ws);
+                              setIsWorkspaceOpen(false);
+                              setIsProfileOpen(false);
+                            }}
+                            className="px-3 py-2 text-sm hover:bg-gray-700 rounded cursor-pointer"
+                          >
+                            {ws}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="border-t border-gray-700 my-2"></div>
+                </div>
+
+                {/* ALWAYS (Desktop + Mobile) */}
+                <div className="px-3 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
                   <Icon name="settings" size={16} />
                   Settings
                 </div>
-                <div className="px-3 py-2 text-white hover:bg-gray-700 flex items-center gap-2 cursor-pointer transition">
+                <div className="px-3 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
                   <Icon name="logout" size={16} />
                   Logout
                 </div>
               </div>
             )}
           </div>
-        </div>
-
-        {/* MOBILE MENU BUTTON */}
-        <div className="md:hidden relative z-10" ref={mobileMenuRef}>
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2"
-          >
-            {isMobileMenuOpen ? (
-              <Icon name="chevronDown" size={28} className="mt-2" />
-            ) : (
-              <Icon name="menuIcon" size={22} className="mt-1" />
-            )}
-          </button>
-
-          {/* MOBILE DROPDOWN */}
-          {isMobileMenuOpen && (
-            <div className="absolute right-0 mt-1 w-64 bg-gray-800 border border-gray-700 rounded-lg shadow-lg p-3 space-y-2">
-              {/* Workspace */}
-              <div>
-                <p className="px-2 py-1 text-l">Workspace</p>
-                {/* {workspaces.map((ws) => (
-                  <div
-                    key={ws}
-                    onClick={() => {
-                      setWorkspace(ws);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="px-2 py-1 hover:bg-gray-700 rounded cursor-pointer"
-                  >
-                    {ws}
-                  </div>
-                ))} */}
-              </div>
-
-              {/* Search */}
-              <div
-                onClick={() => {
-                  setIsSearchOpen(true);
-                  setIsMobileMenuOpen(false);
-                }}
-                className="flex items-center gap-2 px-2 py-1 hover:bg-gray-700 rounded cursor-pointer"
-              >
-                <Icon name="search" size={18} />
-                Search
-              </div>
-
-              {/* Notifications */}
-              <div className="flex items-center gap-2 px-2 py-2 hover:bg-gray-700 rounded cursor-pointer">
-                <Icon name="bell" size={18} />
-                Notifications
-              </div>
-
-              {/* Profile */}
-              <div className="border-t border-gray-700 pt-2">
-                <div className="px-2 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
-                  <Icon name="settings" size={18} className="mt-1" />
-                  Settings
-                </div>
-                <div className="px-2 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
-                  <Icon name="logout" size={18} className="mt-1" />
-                  Logout
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </header>
 
