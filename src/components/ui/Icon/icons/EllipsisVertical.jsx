@@ -1,4 +1,4 @@
-export default function CloseIcon({ size = 24, className = "" }) {
+export default function EllipsisVerticalIcon({ size = 24, className = "" }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,8 +12,9 @@ export default function CloseIcon({ size = 24, className = "" }) {
       strokeLinejoin="round"
       className={className}
     >
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
+      <circle cx="12" cy="12" r="1" />
+      <circle cx="12" cy="5" r="1" />
+      <circle cx="12" cy="19" r="1" />
     </svg>
   );
 }

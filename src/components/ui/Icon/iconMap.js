@@ -20,6 +20,10 @@ import KeyStoreIcon from "./icons/KeyStoreIcon";
 import TenantIcon from "./icons/TenantIcon";
 import IntegrationIcon from "./icons/IntegrationIcon";
 import DashboardIcon from "./icons/DashboardIcon";
+import EllipsisVerticalIcon from "./icons/EllipsisVertical";
+import EyeIcon from "./icons/EyeIcon";
+import TrashIcon from "./icons/TrashIcon";
+import PencilIcon from "./icons/PencilIcon";
 
 export const ICON_MAP = {
   plusIcon: PlusIcon,
@@ -44,4 +48,8 @@ export const ICON_MAP = {
   tenantIcon: TenantIcon,
   integrationIcon: IntegrationIcon,
   dashboardIcon: DashboardIcon,
+  ellipsisVerticalIcon: EllipsisVerticalIcon,
+  eyeIcon: EyeIcon,
+  trashIcon: TrashIcon,
+  pencilIcon: PencilIcon,
 };

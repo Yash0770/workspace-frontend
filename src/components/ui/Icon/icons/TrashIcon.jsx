@@ -1,4 +1,4 @@
-export default function CloseIcon({ size = 24, className = "" }) {
+export default function TrashIcon({ size = 24, className = "" }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,8 +12,9 @@ export default function CloseIcon({ size = 24, className = "" }) {
       strokeLinejoin="round"
       className={className}
     >
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
+      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+      <path d="M3 6h18" />
+      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
     </svg>
   );
 }

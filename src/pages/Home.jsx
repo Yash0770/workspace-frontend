@@ -48,6 +48,7 @@ export default function Home() {
             key={item.id}
             title={item.title}
             description={item.description}
+            createdOn={item.createdOn}
           />
         ))}
       </div>
