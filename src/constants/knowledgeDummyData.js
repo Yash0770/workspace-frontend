@@ -38,7 +38,7 @@ export const knowledgeData = [
     id: 6,
     title: "Collaboration and Sharing",
     description:
-      "Share documents securely, set granular permissions, track version history, and use real-time collaboration features with team members.",
+      "Share document.",
     createdOn: "05/04/2026",
   },
 ];

@@ -15,11 +15,11 @@ export default function Home() {
   return (
     <MainLayout>
       {/* Header section */}
-      <div className="flex justify-between items-center mt-1 mb-6">
-        <h2 className="text-2xl font-bold">Knowledge Base</h2>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-1 mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold">Knowledge Base</h2>
 
-        <div className="flex items-center gap-3">
-          <div className="relative">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full sm:w-auto">
+          <div className="relative w-full sm:w-64">
             <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
               <Icon name="searchIcon" size={18} />
             </div>
@@ -27,13 +27,13 @@ export default function Home() {
             <input
               type="text"
               placeholder="Search..."
-              className="pl-9 pr-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-gray-600"
+              className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-gray-600"
             />
           </div>
 
           <Button
             onClick={handleOpen}
-            className="cursor-pointer flex items-center gap-2"
+            className="w-full sm:w-auto flex justify-center items-center gap-2 cursor-pointer"
           >
             <Icon name="plusIcon" size={16} />
             Create New
