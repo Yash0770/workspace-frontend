@@ -17,9 +17,11 @@ export default function Home() {
     <MainLayout
       pagination={
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-gray-600">
-          <span className="font-bold">{knowledgeData.length} rows</span>
+          <span className="text-sm md:text-base font-bold">
+            {knowledgeData.length} rows
+          </span>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm md:text-base">
             <div className="flex items-center gap-2">
               <span className="whitespace-nowrap font-bold">Rows per page</span>
               <div className="relative">

@@ -68,7 +68,7 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
             </button>
 
             {isWorkspaceOpen && (
-              <div className="absolute mt-2 w-44 bg-gray-800 border border-gray-700 rounded-md shadow-lg z-20">
+              <div className="absolute mt-2 w-44 bg-gray-800 border border-gray-700 rounded-md shadow-lg z-20 overflow-hidden">
                 {workspaces.map((ws) => (
                   <div
                     key={ws}
@@ -116,7 +116,7 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
             </button>
 
             {isProfileOpen && (
-              <div className="absolute right-0 mt-2 w-56 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-20">
+              <div className="absolute right-0 mt-2 w-48 lg:w-40 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-20 overflow-hidden">
                 <div className="md:hidden">
                   <div
                     onClick={() => {
@@ -125,17 +125,17 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
                     }}
                     className="px-3 py-2 hover:bg-gray-700 flex items-center gap-2 cursor-pointer"
                   >
-                    <Icon name="searchIcon" size={16} />
+                    <Icon name="searchIcon" size={17} />
                     Search
                   </div>
 
                   <div className="relative" ref={workspaceRef}>
                     <div
                       onClick={() => setIsWorkspaceOpen(!isWorkspaceOpen)}
-                      className="px-3 py-2 hover:bg-gray-700 flex items-center justify-between cursor-pointer"
+                      className="px-3 py-1 hover:bg-gray-700 flex items-center justify-between cursor-pointer"
                     >
                       <div className="flex items-center gap-2">
-                        <Icon name="chevronDown" size={16} />
+                        <Icon name="chevronDown" size={22} className="mt-2" />
                         Workspaces
                       </div>
                     </div>
@@ -163,11 +163,11 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
                 </div>
 
                 <div className="px-3 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
-                  <Icon name="settingIcon" size={16} />
+                  <Icon name="settingIcon" size={18} className="mt-1" />
                   Settings
                 </div>
                 <div className="px-3 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
-                  <Icon name="logoutIcon" size={16} />
+                  <Icon name="logoutIcon" size={18} className="mt-1" />
                   Logout
                 </div>
               </div>
