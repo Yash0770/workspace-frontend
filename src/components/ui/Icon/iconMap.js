@@ -22,14 +22,14 @@ import IntegrationIcon from "./icons/IntegrationIcon";
 import DashboardIcon from "./icons/DashboardIcon";
 
 export const ICON_MAP = {
-  plus: PlusIcon,
-  close: CloseIcon,
-  search: SearchIcon,
+  plusIcon: PlusIcon,
+  closeIcon: CloseIcon,
+  searchIcon: SearchIcon,
   menuIcon: MenuIcon,
-  bell: BellIcon,
+  bellIcon: BellIcon,
   chevronDown: ChevronDownIcon,
-  settings: SettingsIcon,
-  logout: LogoutIcon,
+  settingIcon: SettingsIcon,
+  logoutIcon: LogoutIcon,
   agentIcon: AgentIcon,
   libraryIcon: LibraryIcon,
   aiModelIcon: AiModelIcon,

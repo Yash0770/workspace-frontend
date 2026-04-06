@@ -3,6 +3,8 @@ import MainLayout from "../components/layout/MainLayout";
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import Modal from "../components/ui/Modal";
+import Icon from "@/components/ui/Icon/Icon";
+import { knowledgeData } from "../constants/knowledgeDummyData";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,47 +18,38 @@ export default function Home() {
       <div className="flex justify-between items-center mt-1 mb-6">
         <h2 className="text-2xl font-bold">Knowledge Base</h2>
 
-        <Button onClick={handleOpen} className="cursor-pointer">
-          Create New
-        </Button>
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <Icon name="searchIcon" size={18} />
+            </div>
+
+            <input
+              type="text"
+              placeholder="Search..."
+              className="pl-9 pr-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-gray-600"
+            />
+          </div>
+
+          <Button
+            onClick={handleOpen}
+            className="cursor-pointer flex items-center gap-2"
+          >
+            <Icon name="plusIcon" size={16} />
+            Create New
+          </Button>
+        </div>
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <Card title="Test Learn how to start using the platform. Learn how to start using the platform.">
-          <p className="text-sm text-gray-600">
-            Learn how to start using the platform.
-          </p>
-        </Card>
-
-        <Card title="Account Setup">
-          <p className="text-sm text-gray-600">
-            Manage your account preferences. Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit. Cumque nesciunt unde officiis ipsam
-            cupiditate numquam dolorum distinctio expedita. Animi corrupti iure
-            dolores non nobis aspernatur esse enim consequuntur accusantium
-            ullam. Quidem possimus magni adipisci facere laboriosam eius. Eaque
-            tempore suscipit, commodi, similique rem deleniti ex itaque pariatur
-            eum inventore voluptatem hic obcaecati maiores saepe dolores
-            quisquam harum vero neque culpa. Non veritatis amet voluptates sint
-            libero fugiat. Doloribus atque eius esse minima ratione modi illo
-            qui beatae quas, optio repudiandae sequi at impedit obcaecati
-            explicabo? Amet dicta temporibus rerum modi? A ipsum qui dicta
-            dolore porro ipsa dolorem ratione. Ducimus, debitis animi?
-            Perspiciatis veniam qui labore minima fugit officiis aliquid rem
-            ullam placeat quia, id delectus reiciendis atque. Amet, harum!
-          </p>
-        </Card>
-        <Card title="Account Setup">
-          <p className="text-sm text-gray-600">
-            Manage your account preferences.
-          </p>
-        </Card>
-        <Card title="Account Setup">
-          <p className="text-sm text-gray-600">
-            Manage your account preferences.
-          </p>
-        </Card>
+      <div className="bg-gray-50 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 border border-gray-200 rounded-xl p-4 overflow-hidden">
+        {knowledgeData.map((item) => (
+          <Card
+            key={item.id}
+            title={item.title}
+            description={item.description}
+          />
+        ))}
       </div>
 
       {/* Modal */}

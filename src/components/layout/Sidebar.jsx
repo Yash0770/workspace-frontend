@@ -1,5 +1,5 @@
 import Icon from "@/components/ui/Icon/Icon";
-import { sidebarSections } from "../../constants/dummyData";
+import { sidebarSections } from "../../constants/sidebarData";
 
 export default function Sidebar({ isOpen, onClose }) {
   return (
@@ -18,7 +18,7 @@ export default function Sidebar({ isOpen, onClose }) {
           onClick={onClose}
           className="p-1 rounded-md hover:bg-gray-200 transition"
         >
-          <Icon name="close" size={20} />
+          <Icon name="closeIcon" size={20} />
         </button>
       </div>
 

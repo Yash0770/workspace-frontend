@@ -51,7 +51,7 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
             className="lg:hidden p-1.5 rounded-md hover:bg-white/20 transition"
             aria-label="Toggle sidebar"
           >
-            <Icon name={isSidebarOpen ? "close" : "menuIcon"} size={22} />
+            <Icon name={isSidebarOpen ? "closeIcon" : "menuIcon"} size={22} />
           </button>
 
           <img src={logo} alt="logo" className="h-8 w-8 object-contain" />
@@ -92,7 +92,7 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
             onClick={() => setIsSearchOpen(true)}
             className="w-full max-w-xs lg:max-w-md flex items-center gap-2 border border-white/20 rounded-lg px-3 py-2 cursor-pointer bg-white/10 hover:bg-white/20 transition"
           >
-            <Icon name="search" size={18} />
+            <Icon name="searchIcon" size={18} />
             <span className="text-gray-300 text-sm flex-1">Search...</span>
             <span className="text-xs border border-white/20 px-2 py-0.5 rounded bg-white/10 text-gray-300">
               Ctrl + K
@@ -103,7 +103,7 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
         {/* RIGHT */}
         <div className="flex items-center gap-4 md:gap-6 relative z-10">
           <button className="relative cursor-pointer">
-            <Icon name="bell" size={20} />
+            <Icon name="bellIcon" size={20} />
             <span className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full" />
           </button>
 
@@ -125,7 +125,7 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
                     }}
                     className="px-3 py-2 hover:bg-gray-700 flex items-center gap-2 cursor-pointer"
                   >
-                    <Icon name="search" size={16} />
+                    <Icon name="searchIcon" size={16} />
                     Search
                   </div>
 
@@ -163,11 +163,11 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
                 </div>
 
                 <div className="px-3 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
-                  <Icon name="settings" size={16} />
+                  <Icon name="settingIcon" size={16} />
                   Settings
                 </div>
                 <div className="px-3 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
-                  <Icon name="logout" size={16} />
+                  <Icon name="logoutIcon" size={16} />
                   Logout
                 </div>
               </div>

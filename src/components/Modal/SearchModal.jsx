@@ -44,7 +44,7 @@ export default function SearchModal({ isOpen, onClose }) {
         className="bg-gray-900 w-full max-w-lg rounded-lg shadow-xl p-4 border border-white/10"
       >
         <div className="flex items-center gap-2 border border-white/20 px-3 py-2 rounded-md bg-white/10">
-          <Icon name="search" className="text-white" size={20} />
+          <Icon name="searchIcon" className="text-white" size={20} />
 
           <input
             ref={inputRef}
@@ -54,7 +54,7 @@ export default function SearchModal({ isOpen, onClose }) {
           />
 
           <button onClick={onClose}>
-            <Icon name="close" className="text-white cursor-pointer" size={20} />
+            <Icon name="closeIcon" className="text-white cursor-pointer" size={20} />
           </button>
         </div>
       </div>
