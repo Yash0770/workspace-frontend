@@ -110,7 +110,7 @@ export default function Header({ onMenuToggle, isSidebarOpen }) {
           <div className="relative" ref={profileRef}>
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
-              className="h-9 w-9 rounded-full bg-[#aba6e8] flex items-center justify-center text-sm font-semibold border border-[#1E1B4B] hover:bg-[#8c76c5] transition cursor-pointer"
+              className="h-9 w-9 rounded-full bg-[#aba6e8] flex items-center justify-center text-sm font-bold border border-[#1E1B4B] hover:bg-[#8c76c5] transition cursor-pointer text-black"
             >
               YS
             </button>

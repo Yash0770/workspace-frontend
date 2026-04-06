@@ -2,9 +2,10 @@ import { useState } from "react";
 import MainLayout from "../components/layout/MainLayout";
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
-import Modal from "../components/ui/Modal";
+import AddModal from "../components/ui/AddModal";
 import Icon from "@/components/ui/Icon/Icon";
 import { knowledgeData } from "../constants/knowledgeDummyData";
+import { KNOWLEDGE_BASE_FIELDS } from "../constants/fieldData";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,28 +54,16 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Modal */}
-      <Modal isOpen={isOpen} onClose={handleClose}>
-        <h3 className="text-lg font-semibold mb-4">Create New Article</h3>
-
-        <input
-          type="text"
-          placeholder="Title"
-          className="w-full border rounded-lg px-3 py-2 mb-3"
-        />
-
-        <textarea
-          placeholder="Description"
-          className="w-full border rounded-lg px-3 py-2 mb-4"
-        />
-
-        <div className="flex justify-end gap-2">
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button>Create</Button>
-        </div>
-      </Modal>
+      {/* AddModal */}
+      <AddModal
+        isOpen={isOpen}
+        onClose={handleClose}
+        title="Create New Knowledge Base"
+        description="Best for quick answers from documents, websites and text files."
+        fields={KNOWLEDGE_BASE_FIELDS}
+        submitLabel="Create"
+        onSubmit={(data) => console.log("Submitted:", data)}
+      />
     </MainLayout>
   );
 }
