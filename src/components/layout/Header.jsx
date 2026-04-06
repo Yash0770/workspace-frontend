@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import logo from "@/assets/vite.svg";
-import Icon from "@/components//ui/Icon/Icon";
+import Icon from "@/components/ui/Icon/Icon";
 import SearchModal from "@/components/Modal/SearchModal";
 
-export default function Header() {
+export default function Header({ onMenuToggle, isSidebarOpen }) {
   const [workspace, setWorkspace] = useState("Workspace 1");
   const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -14,7 +14,6 @@ export default function Header() {
 
   const workspaces = ["Workspace 1", "Workspace 2", "Workspace 3"];
 
-  // Ctrl + K shortcut
   useEffect(() => {
     const handleKeyDown = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
@@ -22,35 +21,39 @@ export default function Header() {
         setIsSearchOpen(true);
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (workspaceRef.current && !workspaceRef.current.contains(e.target)) {
+      if (workspaceRef.current && !workspaceRef.current.contains(e.target))
         setIsWorkspaceOpen(false);
-      }
-
       if (profileRef.current && !profileRef.current.contains(e.target)) {
         setIsProfileOpen(false);
         setIsWorkspaceOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <>
-      <header className="relative lg:mx-4 h-16 flex items-center justify-between px-4 md:px-6 text-white lg:rounded-xl backdrop-blur-md bg-[radial-gradient(circle_at_center,_#3b82f6,_#211d50)]">
-        <div className="absolute inset-0 lg:rounded-xl bg-black/50 backdrop-blur-sm"></div>
+      <header className="relative z-50 lg:mx-4 h-16 flex items-center justify-between px-4 md:px-6 text-white lg:rounded-xl backdrop-blur-md bg-[radial-gradient(circle_at_center,_#3b82f6,_#211d50)]">
+        <div className="absolute inset-0 lg:rounded-xl bg-black/50 backdrop-blur-sm" />
 
         {/* LEFT */}
         <div className="flex items-center gap-3 relative z-10">
+          {/* Hamburger — mobile only */}
+          <button
+            onClick={onMenuToggle}
+            className="lg:hidden p-1.5 rounded-md hover:bg-white/20 transition"
+            aria-label="Toggle sidebar"
+          >
+            <Icon name={isSidebarOpen ? "close" : "menuIcon"} size={22} />
+          </button>
+
           <img src={logo} alt="logo" className="h-8 w-8 object-contain" />
           <span className="text-lg font-semibold tracking-wide">Workspace</span>
 
@@ -97,15 +100,13 @@ export default function Header() {
           </div>
         </div>
 
-        {/* DESKTOP RIGHT */}
+        {/* RIGHT */}
         <div className="flex items-center gap-4 md:gap-6 relative z-10">
-          {/* Bell */}
           <button className="relative cursor-pointer">
             <Icon name="bell" size={20} />
-            <span className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></span>
+            <span className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full" />
           </button>
 
-          {/* Profile */}
           <div className="relative" ref={profileRef}>
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
@@ -116,9 +117,7 @@ export default function Header() {
 
             {isProfileOpen && (
               <div className="absolute right-0 mt-2 w-56 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-20">
-                {/* MOBILE ONLY */}
                 <div className="md:hidden">
-                  {/* Search */}
                   <div
                     onClick={() => {
                       setIsSearchOpen(true);
@@ -130,7 +129,6 @@ export default function Header() {
                     Search
                   </div>
 
-                  {/* Workspace */}
                   <div className="relative" ref={workspaceRef}>
                     <div
                       onClick={() => setIsWorkspaceOpen(!isWorkspaceOpen)}
@@ -161,10 +159,9 @@ export default function Header() {
                     )}
                   </div>
 
-                  <div className="border-t border-gray-700 my-2"></div>
+                  <div className="border-t border-gray-700 my-2" />
                 </div>
 
-                {/* ALWAYS (Desktop + Mobile) */}
                 <div className="px-3 py-2 hover:bg-gray-700 flex gap-2 cursor-pointer">
                   <Icon name="settings" size={16} />
                   Settings
