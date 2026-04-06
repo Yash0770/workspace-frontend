@@ -24,6 +24,10 @@ import EllipsisVerticalIcon from "./icons/EllipsisVertical";
 import EyeIcon from "./icons/EyeIcon";
 import TrashIcon from "./icons/TrashIcon";
 import PencilIcon from "./icons/PencilIcon";
+import ChevronLeftIcon from "./icons/ChevronLeftIcon";
+import ChevronRightIcon from "./icons/ChevronRightIcon";
+import ChevronsLeftIcon from "./icons/ChevronsLeftIcon";
+import ChevronsRightIcon from "./icons/ChevronsRightIcon";
 
 export const ICON_MAP = {
   plusIcon: PlusIcon,
@@ -52,4 +56,8 @@ export const ICON_MAP = {
   eyeIcon: EyeIcon,
   trashIcon: TrashIcon,
   pencilIcon: PencilIcon,
+  chevronLeftIcon: ChevronLeftIcon,
+  chevronRightIcon: ChevronRightIcon,
+  chevronsLeftIcon: ChevronsLeftIcon,
+  chevronsRightIcon: ChevronsRightIcon,
 };
